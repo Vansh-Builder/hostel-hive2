@@ -40,7 +40,11 @@ const savedAdminListings = JSON.parse(localStorage.getItem('hostelhive-admin-lis
 if (Array.isArray(savedAdminListings)) stays.splice(0, stays.length, ...savedAdminListings);
 stays.splice(0, stays.length, ...['Jaipur', 'Jodhpur'].flatMap(city => stays.filter(stay => stay.city === city).slice(0, 20)));
 let jaipurPhotoIndex = 0;
-stays.forEach(stay => { if (stay.city === 'Jaipur') stay.image = `/images/jaipur-hostel-${String(++jaipurPhotoIndex).padStart(2, '0')}.jpg`; });
+let jodhpurPhotoIndex = 0;
+stays.forEach(stay => {
+  if (stay.city === 'Jaipur') stay.image = `/images/jaipur-hostel-${String(++jaipurPhotoIndex).padStart(2, '0')}.jpg`;
+  if (stay.city === 'Jodhpur') stay.image = `/images/jodhpur-hostel-${String(++jodhpurPhotoIndex).padStart(2, '0')}.jpg`;
+});
 localStorage.setItem('hostelhive-properties', JSON.stringify(stays));
 
 const collegeFilter = document.createElement('label');
