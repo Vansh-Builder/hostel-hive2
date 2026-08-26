@@ -57,6 +57,7 @@ document.querySelector('.hero-stats strong').textContent = `${stays.length}+`;
 
 let activeGender = 'all';
 stays.forEach((stay, index) => { stay.gender = index % 3 === 0 ? 'Female' : index % 3 === 1 ? 'Male' : 'Unisex'; });
+stays.forEach(stay => { if (stay.college === 'SKIT Jaipur' && !stay.tags.includes('Near SKIT')) stay.tags.push('Near SKIT'); });
 
 let saved = JSON.parse(localStorage.getItem('hostelhive-saved') || '[]');
 let bookings = JSON.parse(localStorage.getItem('hostelhive-bookings') || '[]');
